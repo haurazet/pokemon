@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomePresenter {
     
@@ -15,5 +16,12 @@ class HomePresenter {
     init(interactor: HomeInteractor) {
         self.interactor = interactor
     }
-    
+
+    func inquiryPokemonList() -> PublishSubject<PokemonEntity> {
+        return interactor.inquiryPokemonList()
+    }
+
+    func inquiryPokemonDetail(url: String) -> PublishSubject<PokemonListData> {
+        return interactor.inquiryPokemonDetail(url: url)
+    }
 }

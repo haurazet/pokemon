@@ -9,6 +9,14 @@ import UIKit
 
 class PokemonCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var pokemonImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+
+    static let identifier = String(describing: PokemonCellTableViewCell.self)
+    static let nib = UINib(
+        nibName: identifier,
+        bundle: nil)
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

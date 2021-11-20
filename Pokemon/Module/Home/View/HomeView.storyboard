@@ -16,13 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ini Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvr-Ok-oxN">
-                                <rect key="frame" x="186" y="457" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11d-kO-1LK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUA-qp-taV" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -37,14 +34,23 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mkN-Ve-fCV" secondAttribute="trailing" id="51B-TO-HBI"/>
                             <constraint firstItem="EUA-qp-taV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5wd-4f-IKM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="11d-kO-1LK" secondAttribute="bottom" id="O37-Zl-kug"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="11d-kO-1LK" secondAttribute="trailing" id="UgA-eR-jIX"/>
                             <constraint firstItem="EUA-qp-taV" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.116071" id="diz-Iq-Ugf"/>
-                            <constraint firstItem="EUA-qp-taV" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="firstBaseline" id="eVu-Hx-rni"/>
+                            <constraint firstItem="EUA-qp-taV" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="eVu-Hx-rni"/>
+                            <constraint firstItem="11d-kO-1LK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="hLG-9W-xcC"/>
                             <constraint firstItem="mkN-Ve-fCV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="jol-1d-hm4"/>
                             <constraint firstItem="mkN-Ve-fCV" firstAttribute="top" secondItem="EUA-qp-taV" secondAttribute="bottom" id="nDY-ed-Ica"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EUA-qp-taV" secondAttribute="trailing" id="shw-LE-afA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mkN-Ve-fCV" secondAttribute="bottom" id="y5I-t6-11K"/>
+                            <constraint firstItem="11d-kO-1LK" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="yXV-kQ-OaE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="EUA-qp-taV" id="D9D-JI-jpG"/>
+                        <outlet property="tableView" destination="mkN-Ve-fCV" id="lje-Bt-HTS"/>
+                        <outlet property="topView" destination="11d-kO-1LK" id="59X-9e-a7K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

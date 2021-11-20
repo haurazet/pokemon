@@ -10,6 +10,7 @@ import UIKit
 class HomeRouter {
     
     func showView() -> HomeView {
+        print("masuk showview")
         let interactor = HomeInteractor()
         let presenter = HomePresenter(interactor: interactor)
         
@@ -19,23 +20,7 @@ class HomeRouter {
             fatalError("Error loading Storyboard")
         }
         view.presenter = presenter
+
         return view
     }
-    
-    //Navigate to other xib-based router
-    /*
-    func navigateToOtherView(from navigation: UINavigationController, with data: Any) {
-        let otherView = OtherViewRouter().showView(with: data)
-        navigation.pushViewController(otherView, animated: true)
-    }
-    */
-    
-    //Navigate to other storyboard-based router
-    /*
-    func navigateToOtherView(from navigation: UINavigationController, with data: Any) {
-        let otherView = OtherViewRouter().showView(with: data)
-        navigation.pushViewController(otherView, animated: true)
-    }
-     */
-    
 }

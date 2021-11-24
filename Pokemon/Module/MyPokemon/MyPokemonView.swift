@@ -16,5 +16,11 @@ class MyPokemonView: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.title = "My Pokemon"
+    }
+
 }
 

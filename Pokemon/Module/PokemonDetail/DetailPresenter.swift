@@ -11,9 +11,11 @@ class DetailPresenter {
     
     private let interactor: DetailInteractor
     private let router = DetailRouter()
+    let pokemonData: PokemonListData
     
-    init(interactor: DetailInteractor) {
+    init(interactor: DetailInteractor, data: PokemonListData) {
         self.interactor = interactor
+        self.pokemonData = data
     }
     
 }

@@ -17,11 +17,22 @@ class HomePresenter {
         self.interactor = interactor
     }
 
+    // MARK: - Inquiry
+
     func inquiryPokemonList() -> PublishSubject<PokemonEntity> {
         return interactor.inquiryPokemonList()
     }
 
     func inquiryPokemonDetail(url: String) -> PublishSubject<PokemonListData> {
         return interactor.inquiryPokemonDetail(url: url)
+    }
+
+    // MARK: - Navigation
+    func navigateToDetail(from navigation: UINavigationController, data: PokemonListData) {
+        router.navigateToDetail(from: navigation, data: data)
+    }
+
+    func navigateToMyPokemon(from navigation: UINavigationController) {
+        router.navigateToMyPokemon(from: navigation)
     }
 }

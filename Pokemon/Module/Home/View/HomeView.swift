@@ -21,17 +21,17 @@ class HomeView: UIViewController {
     var pokemonData: PokemonEntity?
     var newResult: [PokemonListData] = []
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         configure(tableView)
         inquiryPokemonList()
     }
-
-//    override func preload() {
-//        super.preload()
-//        bodySetup()
-//    }
 
     func setNavigationBar() {
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: self.topView.frame.height, width: view.frame.size.width, height: 44))
@@ -46,8 +46,10 @@ class HomeView: UIViewController {
         navBar.setItems([navItem], animated: false)
     }
 
-    @objc func getList() { // remove @objc for Swift 3
-        print("masuk get list")
+    @objc func getList() {
+        guard let presenter = presenter,
+              let navigation = self.navigationController else {return}
+        presenter.navigateToMyPokemon(from: navigation)
     }
 
     func configure(_ tableView: UITableView) {
@@ -94,11 +96,10 @@ class HomeView: UIViewController {
         self.presenter?.inquiryPokemonDetail(url: url).asObserver().subscribe(onNext: { [weak self] data in
             guard let self = self,
                   let result = self.pokemonData?.results,
-                  let id = data.id else {return}
+                  let name = data.name else {return}
 
             for pokemon in result{
-                let pokemonID = pokemon.url?.suffix(2).replacingOccurrences(of: "/", with: "")
-                if pokemonID == String(id) {
+                if name.lowercased() == pokemon.name?.lowercased() {
                     self.newResult.append(PokemonListData.init(url: pokemon.url, name: pokemon.name, image: data.image, baseExperience: data.baseExperience, height: data.height, weight: data.weight, order: data.order))
                     self.pokemons.onNext(self.newResult)
                 }
@@ -111,5 +112,10 @@ extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let presenter = presenter,
+              let navigation = self.navigationController else {return}
+        presenter.navigateToDetail(from: navigation, data: self.newResult[indexPath.row])
+    }
 }

@@ -9,9 +9,9 @@ import UIKit
 
 class DetailRouter {
     
-    func showView() -> DetailView {
+    func showView(data: PokemonListData) -> DetailView {
         let interactor = DetailInteractor()
-        let presenter = DetailPresenter(interactor: interactor)
+        let presenter = DetailPresenter(interactor: interactor, data: data)
         
         let storyboardId = String(describing: DetailView.self)
         let storyboard = UIStoryboard(name: storyboardId, bundle: nil)

@@ -29,17 +29,6 @@ struct PokemonListData: Codable {
     var url, name, image: String?
     var baseExperience, height, weight, order, id : Int?
 
-//    init(url: String?, name: String?, image: String?, baseExperience: Int?, height: Int?,
-//         weight: Int?, order: Int?) {
-//        var url = url
-//        var name = name
-//        var image = image
-//        var baseExperience = baseExperience
-//        var height = height
-//        var weight = weight
-//        var order = order
-//    }
-
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case url = "url"
@@ -53,7 +42,6 @@ struct PokemonListData: Codable {
 
 enum Endpoint {
     case inquiryPokemon
-//    case inquiryPokemonDetail
 
     var value: String {
         let baseURL = "https://pokeapi.co/api/v2/"

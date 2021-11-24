@@ -46,22 +46,17 @@ class HomeInteractor {
             .debug()
             .subscribe(onNext: { (r, json) in
                 if let data = json as? [String: AnyObject] {
-                    guard let sprites = data["sprites"] as? AnyObject,
+                    guard let sprites = data["sprites"],
                           let image = sprites["front_default"] as? String,
                           let baseExperience = data["base_experience"] as? Int,
                           let height = data["height"] as? Int,
                           let weight = data["weight"] as? Int,
                           let order = data["order"] as? Int,
-                          let id = data["id"] as? Int else {
+                          let id = data["id"] as? Int,
+                          let name = data["name"] as? String else {
                         return
                     }
-//                          let next = data["next"] as? String,
-//                          let results = data["results"] as? [AnyObject] else {return}
-//                    var list: [PokemonListData] = []
-//                    for pokemon in results {
-//                        list.append(PokemonListData.init(url: pokemon["url"] as? String, name: pokemon["name"] as? String, image: "", baseExperience: 0, height: 0, weight: 0, order: 0, id: 0))
-//                    }
-                    subject.onNext(PokemonListData.init(url: "", name: "", image: image, baseExperience: baseExperience, height: height, weight: weight, order: order, id: id))
+                    subject.onNext(PokemonListData.init(url: "", name: name, image: image, baseExperience: baseExperience, height: height, weight: weight, order: order, id: id))
 
 //                i dont know why it does not map itself to PokemonEntity as usual
 //                if let data = json as? PokemonEntity {

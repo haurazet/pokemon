@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let sb = UIStoryboard(name: "HomeView", bundle: nil)
 //        let vc = sb.instantiateViewController(withIdentifier: "HomeView")
 //        self.window?.rootViewController = vc
+//
+//        if let navVC = UIStoryboard(name: "HomeView", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeView") as? UINavigationController,
+//            let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            appDelegate.window?.rootViewController = navVC
+//            appDelegate.window?.makeKeyAndVisible()
+//        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SplashScreen(nibName: String(describing: SplashScreen.self), bundle: nil)

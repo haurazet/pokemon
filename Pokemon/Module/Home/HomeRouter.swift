@@ -10,17 +10,28 @@ import UIKit
 class HomeRouter {
     
     func showView() -> HomeView {
-        print("masuk showview")
         let interactor = HomeInteractor()
         let presenter = HomePresenter(interactor: interactor)
-        
-        let storyboardId = String(describing: HomeView.self)
-        let storyboard = UIStoryboard(name: storyboardId, bundle: nil)
-        guard let view = storyboard.instantiateViewController(withIdentifier: storyboardId) as? HomeView else {
+
+        let storyboard = UIStoryboard(
+            name: String(describing: HomeView.self),
+            bundle: nil)
+        guard let view = storyboard.instantiateViewController(withIdentifier: String(describing: HomeView.self)) as? HomeView else {
             fatalError("Error loading Storyboard")
         }
+        
         view.presenter = presenter
 
         return view
+    }
+
+    func navigateToDetail(from navigation: UINavigationController, data: PokemonListData) {
+        let detailVC = DetailRouter().showView(data: data)
+        navigation.pushViewController(detailVC, animated: true)
+    }
+
+    func navigateToMyPokemon(from navigation: UINavigationController) {
+        let myPokemonVC = MyPokemonRouter().showView()
+        navigation.pushViewController(myPokemonVC, animated: true)
     }
 }
